@@ -1,0 +1,74 @@
+body {
+  /* font-family: 'Crimson Text', serif; */
+  font-family: 'Roboto', sans-serif;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+}
+.navbar-brand img {
+  height: 30px;
+}
+
+main {
+  margin-top: 90px;
+  margin-bottom: 40px;
+}
+
+.droppable{
+  border: 2px solid red;
+}
+
+.card {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0px auto;
+}
+
+.card:nth-child(2) {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.list-group-item {
+  text-align: center;
+  border: none;
+}
+
+.livro {
+  border: 1px solid black;
+  width: 100%;
+}
+
+nav p {
+  color: white;
+  margin-bottom: 0px;
+}
+
+footer {
+    height: 50px;
+}
+
+footer p {
+    color: white;
+    line-height: 50px;
+}
+
+.novo-livro:hover {
+  cursor: pointer;
+}
+
+.livro.draggable {
+  /* -ms-transform: rotate(15deg); /* IE 9 */
+  /* -webkit-transform: rotate(15deg); /* Safari */
+  /* transform: rotate(15deg); */
+  transform: scale(0.7, 0.7) rotate(15deg);
+}
+
+.capa {
+  margin: 10px auto;
+}

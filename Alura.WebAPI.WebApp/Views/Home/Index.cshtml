@@ -1,0 +1,56 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<main class="row">
+
+    <div class="card col-3 lista-leitura" id="coluna-paraler" data-id="paraler">
+        <h4 class="card-header">Para Ler</h4>
+        <ul class="list-group">
+            @foreach (var livro in Model.ParaLer)
+            {
+                @Html.Partial("Livro", livro)
+            }
+            <li class="list-group-item">
+                <a asp-action="Novo" asp-controller="Livro" asp-route-tipo="@TiposDeListaLeitura.ParaLer" >
+                    <img class="novo-livro img-fluid" src="~/images/livro-novo.png" alt="Incluir Livro Para Ler">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--fim #coluna-paraler-->
+
+    <div class="card col-3 lista-leitura" id="coluna-lendo" data-id="lendo">
+        <h4 class="card-header">Lendo</h4>
+        <ul class="list-group">
+            @foreach (var livro in Model.Lendo)
+            {
+                @Html.Partial("Livro", livro)
+            }
+            <li class="list-group-item">
+                <a asp-action="Novo" asp-controller="Livro" asp-route-tipo="@TiposDeListaLeitura.Lendo">
+                    <img class="novo-livro img-fluid" src="~/images/livro-novo.png" alt="Incluir Livro Lendo">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--fim #coluna-lendo-->
+
+    <div class="card col-3 lista-leitura" id="coluna-lidos" data-id="lidos">
+        <h4 class="card-header">Lidos</h4>
+        <ul class="list-group">
+            @foreach (var livro in Model.Lidos)
+            {
+                @Html.Partial("Livro", livro)
+            }
+            <li class="list-group-item">
+                <a asp-action="Novo" asp-controller="Livro" asp-route-tipo="@TiposDeListaLeitura.Lidos">
+                    <img class="novo-livro img-fluid" src="~/images/livro-novo.png" alt="Incluir Livro Lido">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!--fim #coluna-lidos-->
+</main>
