@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-Alura.WebAPI.WebApp-C4CD33AA-0A18-4F90-AAAD-6C450E1A880F</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20180524194430_AjusteLivro.cs" />
+    <Compile Remove="Data\Migrations\20180524194430_AjusteLivro.Designer.cs" />
+    <Compile Remove="Data\Migrations\20180524195310_AjusteLivro.cs" />
+    <Compile Remove="Data\Migrations\20180524195310_AjusteLivro.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />

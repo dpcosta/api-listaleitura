@@ -44,9 +44,10 @@ $(".livro").draggable({
                 listItemGroup.prependTo(listGroupDestino);
                 $(ui.draggable).attr("style", "position: relative");
 
-                //chamar uma requisição post para mover o livro
-                $.post({
-                    url: "/Livro/Mover",
+                //chamar uma requisição PUT para mover o livro
+                $.ajax({
+                    url: "/api/listaleitura",
+                    type: "PUT",
                     data: { LivroId: idLivro, Origem: idColunaOrigem, Destino: idColunaDestino },
                     success: function () {
                         console.log("A movimentação foi efetuada com sucesso!");

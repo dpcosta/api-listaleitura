@@ -22,5 +22,18 @@ namespace Alura.WebAPI.WebApp.Models.LivroViewModels
 
         //[RegularExpression("")] //validar o caminho da imagem?
         public string Capa { get; set; }
+
+        public Livro ToLivro()
+        {
+            return new Livro
+            {
+                Id = this.Id,
+                Titulo = this.Titulo,
+                Subtitulo = this.Subtitulo,
+                Resumo = this.Resumo,
+                Autor = this.Autor,
+                Capa = this.Capa
+            };
+        }
     }
 }

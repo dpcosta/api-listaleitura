@@ -40,35 +40,12 @@ namespace Alura.WebAPI.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                //incluir o livro na lista de leitura do usuário!!
                 var userId = _userManager.GetUserId(User);
-                //incluir o livro na lista de leitura!!
-                var livro = new Livro
-                {
-                    Titulo = model.Titulo,
-                    Subtitulo = model.Subtitulo,
-                    Resumo = model.Resumo,
-                    Autor = model.Autor,
-                    Capa = model.Capa,
-                };
-                var lista = _listaManager.FindBy(userId, model.Tipo);
-                if (lista != null)
-                {
-                    lista.Livros.Add(livro);
-                    _listaManager.Alterar(lista);
-                }
-                else
-                {
-                    lista = new ListaLeitura
-                    {
-                        UsuarioId = userId,
-                        Livros = new List<Livro> { livro },
-                        Tipo = model.Tipo
-                    };
-                    _listaManager.Incluir(lista);
-                }
+                _listaManager.IncluirLivro(userId, model.ToLivro(), model.Tipo);
                 return RedirectToAction("Index", new { controller = "Home" });
             }
-            HttpContext.Response.StatusCode = 400;
+            HttpContext.Response.StatusCode = 400; //Bad Request
             return View(model);
         }
 
@@ -93,11 +70,7 @@ namespace Alura.WebAPI.WebApp.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var livro = _livrosManager.Find(model.LivroId);
-            var listaOrigem = _listaManager.FindBy(userId, model.Origem);
-            var listaDestino = _listaManager.FindBy(userId, model.Destino);
-            listaOrigem.Livros.Remove(livro);
-            listaDestino.Livros.Add(livro);
-            _listaManager.Alterar(listaOrigem, listaDestino);
+            _listaManager.MoverLivro(userId, livro, model.Origem, model.Destino);
             return Ok();
         }
     }

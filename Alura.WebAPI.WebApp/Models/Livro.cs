@@ -16,6 +16,7 @@ namespace Alura.WebAPI.WebApp.Models
         public string Resumo { get; set; }
         public string Autor { get; set; }
         public string Capa { get; set; }
-        public ListaLeitura Lista { get; set; }
+        public int ListaLeituraId { get; set; }
+        //public ListaLeitura Lista { get; set; }
     }
 }

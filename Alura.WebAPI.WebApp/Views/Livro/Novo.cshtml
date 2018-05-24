@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-5">
-        <form asp-action="Novo">
+        <form action="#">
 
             <input type="hidden" asp-for="Tipo" />
 
@@ -60,3 +60,41 @@
 </main>
 
 
+@section  Scripts 
+{
+    <script>
+        function livroFromFormulario() {
+            return {
+                Tipo: $("#Tipo").val(),
+                Titulo: $("#Titulo").val(),
+                Subtitulo: $("#Subtitulo").val(),
+                Resumo: $("#Resumo").val(),
+                Autor: $("#Autor").val(),
+                Capa: $("#Capa").val()
+            };
+        };
+
+        $("form").submit(function () {
+            //pegar os valores de cada campo
+            var livro = livroFromFormulario();
+            //enviar a requisição de post
+            $.post({
+                url: "/api/ListaLeitura",
+                data: {
+                    titulo: livro.Titulo,
+                    subtitulo: livro.Subtitulo,
+                    resumo: livro.Resumo,
+                    autor: livro.Autor,
+                    capa: livro.Capa,
+                    tipo: livro.Tipo
+                },
+                success: function (data) {
+                    console.log("formulário foi submetido com sucesso!");
+                    console.log(data);
+                    document.location = "/";
+                }
+            });
+            event.preventDefault();
+        });
+    </script>
+}

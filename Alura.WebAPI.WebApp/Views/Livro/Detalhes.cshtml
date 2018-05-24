@@ -14,9 +14,26 @@
         <h4>@Model.Autor</h4>
         <footer>
             <button class="btn btn-primary">EDITAR</button>
-            <button class="btn btn-danger">EXCLUIR</button>
+            <button id="btnExcluir" class="btn btn-danger">EXCLUIR</button>
         </footer>
     </div>
 
 </main>
 
+@section Scripts {
+    <script>
+        $("#btnExcluir").click(function () {
+            $.ajax({
+                url: "/api/listaleitura/@Model.Id" ,
+                type: 'DELETE',
+                success: function () {
+                    console.log("Livro foi removido da lista com sucesso!");
+                    document.location = "/";
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+}

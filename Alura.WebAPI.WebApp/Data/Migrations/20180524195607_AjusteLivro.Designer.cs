@@ -12,9 +12,10 @@ using System;
 namespace Alura.WebAPI.WebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180524195607_AjusteLivro")]
+    partial class AjusteLivro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,7 +101,7 @@ namespace Alura.WebAPI.WebApp.Data.Migrations
 
                     b.Property<string>("Capa");
 
-                    b.Property<int>("ListaLeituraId");
+                    b.Property<int?>("ListaLeituraId");
 
                     b.Property<string>("Resumo");
 
@@ -236,8 +237,7 @@ namespace Alura.WebAPI.WebApp.Data.Migrations
                 {
                     b.HasOne("Alura.WebAPI.WebApp.Models.ListaLeitura")
                         .WithMany("Livros")
-                        .HasForeignKey("ListaLeituraId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ListaLeituraId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
