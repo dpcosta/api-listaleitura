@@ -1,6 +1,7 @@
 body {
   /* font-family: 'Crimson Text', serif; */
   font-family: 'Roboto', sans-serif;
+  /*background-color: #ffe7bc;*/
 }
 
 .bg-dark {
@@ -23,25 +24,18 @@ main {
   border: 2px solid red;
 }
 
-.card {
+.lista-leitura {
   padding-left: 0px;
   padding-right: 0px;
   margin: 0px auto;
 }
 
-.card:nth-child(2) {
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.list-group-item {
-  text-align: center;
-  border: none;
+.lista-leitura ul {
+    padding: 0px;
 }
 
 .livro {
-  border: 1px solid black;
-  width: 100%;
+    border: 1px solid black;
 }
 
 nav p {
