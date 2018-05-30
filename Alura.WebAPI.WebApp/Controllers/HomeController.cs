@@ -38,6 +38,11 @@ namespace Alura.WebAPI.WebApp.Controllers
             return View("NaoLogado");
         }
 
+        public IActionResult Pesquisa(string termo)
+        {
+            return View("Pesquisa", termo);
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

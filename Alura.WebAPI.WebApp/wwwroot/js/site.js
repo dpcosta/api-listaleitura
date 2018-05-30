@@ -45,12 +45,15 @@ $(".livro").draggable({
                 $(ui.draggable).attr("style", "position: relative");
 
                 //chamar uma requisição PUT para mover o livro
-                $.ajax({
-                    url: "/api/listaleitura",
-                    type: "PUT",
+                $.post({
+                    url: "/api/movimentacao",
                     data: { LivroId: idLivro, Origem: idColunaOrigem, Destino: idColunaDestino },
                     success: function () {
                         console.log("A movimentação foi efetuada com sucesso!");
+                    },
+                    error: function () {
+                        console.error("Algo de errado ocorreu.");
+                        //voltar o draggable pra origem
                     }
                 });
             }

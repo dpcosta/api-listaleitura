@@ -4,41 +4,60 @@
     ViewData["Title"] = "Home";
 }
 
-<main class="row">
+<form class="d-none" id="formLogout" asp-action="Logout" asp-controller="Account" method="post">
+    @Html.AntiForgeryToken()
+    <button class="btn btn-sm">Logout</button>
+</form>
 
-    <div class="card col-3 lista-leitura" id="coluna-paraler" data-id="paraler">
-        <h4 class="card-header">Para Ler</h4>
-        <ul class="">
-            @foreach (var livro in Model.ParaLer)
-            {
-                @Html.Partial("Livro", livro)
-            }
-            @Html.Partial("NovoLivro")
-        </ul>
-    </div>
-    <!--fim #coluna-paraler-->
+<main>
 
-    <div class="card col-3 lista-leitura" id="coluna-lendo" data-id="lendo">
-        <h4 class="card-header">Lendo</h4>
-        <ul class="list-group">
-            @foreach (var livro in Model.Lendo)
-            {
-                @Html.Partial("Livro", livro)
-            }
-            @Html.Partial("NovoLivro")
-        </ul>
+    <div class="row">
+        <p class="col-12">
+            Bem vindo, @User.Identity.Name! Essas são suas listas de leituras.
+        </p>
+        <p class="col-12">
+            [<a href="#" onclick="$('#formLogout').submit();">Logout</a>]
+        </p>
     </div>
-    <!--fim #coluna-lendo-->
 
-    <div class="card col-3 lista-leitura" id="coluna-lidos" data-id="lidos">
-        <h4 class="card-header">Lidos</h4>
-        <ul class="">
-            @foreach (var livro in Model.Lidos)
-            {
-                @Html.Partial("Livro", livro)
-            }
-            @Html.Partial("NovoLivro")
-        </ul>
+    <div class="row">
+        <div class="card col-3 lista-leitura" id="coluna-paraler" data-id="paraler">
+            <h4 class="card-header">Para Ler</h4>
+            <ul class="">
+                @foreach (var livro in Model.ParaLer)
+                {
+                    @Html.Partial("Livro", livro)
+                }
+                @Html.Partial("NovoLivro")
+            </ul>
+        </div>
+        <!--fim #coluna-paraler-->
+
+        <div class="card col-3 lista-leitura" id="coluna-lendo" data-id="lendo">
+            <h4 class="card-header">Lendo</h4>
+            <ul class="list-group">
+                @foreach (var livro in Model.Lendo)
+                {
+                    @Html.Partial("Livro", livro)
+                }
+                @Html.Partial("NovoLivro")
+            </ul>
+        </div>
+        <!--fim #coluna-lendo-->
+
+        <div class="card col-3 lista-leitura" id="coluna-lidos" data-id="lidos">
+            <h4 class="card-header">Lidos</h4>
+            <ul class="">
+                @foreach (var livro in Model.Lidos)
+                {
+                    @Html.Partial("Livro", livro)
+                }
+                @Html.Partial("NovoLivro")
+            </ul>
+        </div>
+        <!--fim #coluna-lidos-->
     </div>
-    <!--fim #coluna-lidos-->
+
+
+
 </main>

@@ -22,17 +22,25 @@
         <a asp-action="Index" asp-controller="Home" class="navbar-brand">
             <img src="~/images/logo.png" alt="Lista de Leitura - Casa do Código">
         </a>
-        @if (User.Identity.IsAuthenticated)
-        {
-        <div>
-            <p>Bem vindo, @User.Identity.Name!
-            [<a href="#" onclick="$('#formLogout').submit();">Logout</a>]</p>
-            <form class="d-none" id="formLogout" asp-action="Logout" asp-controller="Account" method="post">
-                @Html.AntiForgeryToken()
-                <button class="btn btn-sm">Logout</button>
+        <div class="w-75">
+            @*<ul class="nav navbar-nav">
+                @if (User.Identity.IsAuthenticated)
+                {
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="$('#formLogout').submit();">Logout</a>
+                    <form class="d-none" id="formLogout" asp-action="Logout" asp-controller="Account" method="post">
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-sm">Logout</button>
+                    </form>
+                </li>
+                }
+            </ul>*@
+            <form asp-action="Pesquisa" method="post" class="nav justify-content-end form-inline">
+                <input class="form-control mr-2" placeholder="Pesquisar livros..." name="termo" />
+                <button class="btn btn-outline-primary">Pesquisar</button>
             </form>
         </div>
-        }
+        
     </nav>
 
     <div class="container-fluid flex-grow-1">

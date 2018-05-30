@@ -24,7 +24,7 @@
     <script>
         $("#btnExcluir").click(function () {
             $.ajax({
-                url: "/api/listaleitura/@Model.Id" ,
+                url: "/api/livros/@Model.Id" ,
                 type: 'DELETE',
                 success: function () {
                     console.log("Livro foi removido da lista com sucesso!");

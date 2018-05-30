@@ -79,7 +79,7 @@
             var livro = livroFromFormulario();
             //enviar a requisição de post
             $.post({
-                url: "/api/ListaLeitura",
+                url: "/api/livros",
                 data: {
                     titulo: livro.Titulo,
                     subtitulo: livro.Subtitulo,
@@ -89,7 +89,7 @@
                     tipo: livro.Tipo
                 },
                 success: function (data) {
-                    console.log("formulário foi submetido com sucesso!");
+                    console.log("Livro incluído com sucesso!");
                     console.log(data);
                     document.location = "/";
                 }

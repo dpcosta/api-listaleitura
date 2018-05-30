@@ -1,0 +1,54 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Pesquisa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="row">
+    <h2>Pesquisa de Livros</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Subtítulo</th>
+                <th>Autor</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</main>
+
+@section Scripts {
+    <script>
+        var termo = "@Model";
+        console.log("Pesquisando por " + termo + "...");
+
+    $.get({
+        url: "/api/Pesquisa/",
+        data: { termo: termo },
+        success: function (livros) {
+            console.log("Funcionou!");
+            console.log(livros);
+            var html = '';
+            $("table tbody").empty();
+            $.each(livros, function (index, livro) {
+                html = html + 
+                    '<tr>' +
+                        '<td>' + livro.titulo + '</td>' +
+                        '<td>' + livro.subtitulo + '</td>' +
+                        '<td>' + livro.autor + '</td>' +
+                        '<td></td>' +
+                '</tr>';
+            });
+            $('table tbody').html(html);
+        },
+        error: function (erro) {
+            console.log(erro);
+            console.error("Deu merda");
+        }
+    });
+
+    </script>
+}
